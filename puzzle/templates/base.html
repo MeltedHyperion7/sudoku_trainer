@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'scss/style.css' %}">
+    {% block additional_statics %}
+    {% endblock %}
+</head>
+<body>
+    <noscript>Sorry, but this site needs JavaScript to function. Please turn on JavaScript in your browser.</noscript>
+    <header>
+        <nav id="main_nav">
+           <div id="masthead">
+               <div id="logo"><a href="{% url 'index' %}">Sudoku</a></div>
+                <div id="hamburger"></div>
+            </div>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'puzzle:solver' %}">Solve</a></li>
+                <li><a href="#">Challenge</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block additional_js %}
+    {% endblock %}
+</body>
+</html>

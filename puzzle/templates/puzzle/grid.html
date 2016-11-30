@@ -1,0 +1,25 @@
+{% load show_grid %}
+<table class="grid">
+    <tr>
+        <th> </th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+        <th>G</th>
+        <th>H</th>
+        <th>I</th>
+    </tr>
+    {% for y in numbers %}
+        <tr id="row-{{y}}">
+            <th>{{ y|row_num }}</th>
+            {% autoescape off %}
+                {% for x in numbers %}
+                    {% show_cell x y %}
+                {% endfor %}
+            {% endautoescape %}
+        </tr>
+    {% endfor %}
+</table>

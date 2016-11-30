@@ -1,0 +1,146 @@
+$blue: #6CBFCF;
+$light-blue: #7AD7E9;
+$thick-border: 3px solid $blue;
+
+$h-dark: #8669A8;
+$h-light: #C299F5;
+$h-third: #B891E8;
+$h-text: white;
+
+%grid-cell {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+}
+
+%thick-border-right {
+    border-right: $thick-border;
+}
+
+%thick-border-left {
+    border-left: $thick-border;
+}
+
+%thick-border-bottom {
+    border-bottom: $thick-border;
+}
+
+.highlight-light {
+    background: $h-light;
+    color: $h-text;
+}
+
+.highlight-dark {
+    background: $h-dark;
+    color: $h-text;
+}
+
+.highlight-third {
+    background: $h-third;
+    color: $h-text;
+}
+
+.grid {
+    flex: 1;
+    font-size: 0.75rem;
+    padding: 0;
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    tr {
+        margin: 0;
+        padding: 0;
+    }
+    td {
+        @extend %grid-cell;
+        border: 1px solid $light-blue;
+    }
+    th {
+        @extend %grid-cell;
+        font-weight: bold;
+    }
+}
+
+@for $i from 0 through 8 {
+    @for $j from 0 through 8 {
+        @if $i == 0 {
+            #cell-#{$i}-#{$j} {
+                @extend %thick-border-left;
+            }
+        }
+        @if $i % 3 == 2 {
+            #cell-#{$i}-#{$j} {
+                @extend %thick-border-right;
+            }
+        }
+        @if $j % 3 == 2 {
+            #cell-#{$i}-#{$j} {
+                @extend %thick-border-bottom;
+            }
+        }
+    }
+}
+
+#row-0 td {
+    border-top: $thick-border;
+}
+
+#row-8 td {
+    border-bottom: $thick-border;
+}
+
+#steps_container { 
+    flex: 1;
+    border: 3px solid $blue;
+    margin: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    
+    header {
+        text-align: center;
+        background: $blue;
+        color: white;
+        font-size: 1.5rem;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    
+    button {
+        font-size: 1.05rem;
+        text-align: center;
+        color: white;
+        padding: 8px;
+        background: $blue;
+        border: 0;
+    }
+}
+
+#solve {
+    justify-content: center;
+    margin: 0 25%;
+}
+
+#step_text {
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+#steps_nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+#steps_next, #steps_prev {
+    padding: 12px;
+}
+
+@media all and (max-width: 1000px) {
+    .grid {
+        td {
+            font-size: 0.55rem;
+            height: 35px;
+            width: 35px;
+        }
+    }
+}

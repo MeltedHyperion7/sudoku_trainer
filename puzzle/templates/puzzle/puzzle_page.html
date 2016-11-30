@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load show_grid %}
+{% block additional_statics %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'puzzle/grid.css' %}">
+{% endblock %}
+
+{% block body %}
+{% show_grid %}
+<div id="steps_container">
+    <header>Solution</header>
+   <button type="button" id="solve">Solve</button>
+    <div id="step_text"></div>
+    <div id="steps_nav">
+        <button type="button" id="steps_prev">Previous</button>
+        <button type="button" id="show_comp">Show Complete Solution</button>
+        <button id="steps_next" type="button">Next</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script src="{% static 'puzzle/puzzle.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,72 @@
+$nav-background: #222;
+$nav-text: white;
+
+#main_nav {
+    background-color: $nav-background;
+    color: $nav-text;
+    
+    #masthead {
+        height: 35px;
+        #logo {
+            float: left;
+            
+            a {
+                font-size: 1.2rem;
+                text-decoration: none;
+                font-family: 'Pacifico', cursive;
+                
+                &:visited {
+                    color: $nav-text;
+                }
+            }
+        }
+        #hamburger {
+            cursor: pointer;
+            position: relative;
+            float: right;
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+            
+            &:before {
+                content: "";
+                position: absolute;
+                top: 7px;
+                right: 8px;
+                background: $nav-text;
+                width: 25px;
+                height: 3px;
+                box-shadow: 
+                    0 7px 0 0 $nav-text,
+                    0 14px 0 0 $nav-text;
+            }
+        }
+    }
+    ul {
+        list-style-type: none;
+        display: none;
+        
+        li {
+            width: 100%;
+            
+            a {
+                text-decoration: none;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                }
+                
+                &:visited {
+                    color: $nav-text;
+                }
+                
+                &:hover {
+                    background-color: lighten($nav-background, 2%);
+                }
+            }
+        }
+    }
+}
